@@ -1,0 +1,687 @@
+*{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+body{
+	height: 100%;
+	margin: 0;
+	font-size:11px
+}
+.mapClicked{
+	/*fill: #afd2ed;*/
+	/*stroke: #96b8bc; */
+	/*stroke:#fff;*/
+	/*fill:#ffead1;
+	stroke: #e5c297;*/
+	/*stroke: #fff*/
+	fill:#d7efef;
+	stroke: #a9cbce;
+	stroke-width : 1;
+
+
+}
+.mapNotClicked{
+/*	fill: #d7e1e5;
+	stroke: #fff;*/
+	fill:#fff;
+	stroke: #a7c5c6;
+	 stroke-width : 0.65;  
+}	
+.mapHighlighted{
+	stroke-width : 1.2;
+	box-shadow: -20px -20px 20px black;
+}
+.mapFiltered{
+	stroke-width: 0.55;
+}
+.mapHovered{
+	/*fill: #c7ebed;*/
+	/*fill:#dcf7f7;*/
+	fill:#e5f9f9 !important;
+	stroke: #a9cbce !important;
+	stroke-width: 0.65;
+
+}
+.circleClicked{
+	fill: #dd0202 !important ; stroke: #dd0202 !important; stroke-width : 0.3; 
+}
+
+.circleNotClicked{
+	fill: #014e66; stroke: #fff; stroke-width : 0.2; 
+	opacity: 0.3; 
+}
+
+
+.circleHighlighted{
+	/*fill: #ff6666;*/
+	/*fill:#0087a9;*/
+	fill:#ff7b4c ;
+	/*fill:#000;*/
+	/*fill: #bc4b4b;*/
+	 stroke: #fff ; stroke-width : 0.3; 
+}
+
+.circleDrawn{
+	fill: #014e66 ; 
+}
+.circleDrawn_war{
+	fill: #fff !important;
+	stroke-width: 4 !important;
+}
+
+.circleFiltered{
+	/*fill: #f4523d; stroke: #fff; stroke-width : 0.3;*/
+	 opacity: 1; 
+}
+.intersected{
+	stroke: #fff; stroke-width : 0.3; 
+}
+.allied{
+	fill: #5b41f4 ;
+	stroke: #5b41f4 !important;
+
+}
+.hostile{
+	fill: #ff6060 ;
+	stroke: #ff6060 !important;
+}
+.war{
+	fill:#fff !important; 
+	stroke: #014e66 ;
+	stroke-width:1.5; 
+}
+.circleHighlighted_war{
+	fill:#fff; 
+	stroke:#ff7b4c ;
+	stroke-width: 1.5;
+}
+.circleClicked_war{
+
+	fill:#fff; 
+	stroke:#dd0202!important;	
+	stroke-width: 1.5;
+
+}
+.dispute{
+	stroke: #fff!important;
+	stroke-width:0.3;
+}
+
+.transparent{
+	opacity : 0;
+	pointer-events:none;
+}
+.transparent2{
+	opacity: 0;
+	pointer-events:none;
+}
+
+.opaque{
+	opacity:1;
+}
+
+.circleFiltered{
+	/*fill: #f4523d; stroke: #fff; stroke-width : 0.3;*/
+	 opacity: 1; 
+}
+.hostText{
+	opacity: 0.5;
+}
+
+#main{
+	position:absolute;
+	width:100%; 
+	height:100%; 
+	overflow:hidden;
+    background:#f5fbfb; 
+    /*background:#fff;*/
+	
+}
+
+#board{
+	position: absolute;
+	top:0;
+	right:0;
+	width:355px; 
+	height:100%;
+	background: rgba(255,255,255,0.9); 
+	overflow:hidden; 
+	box-shadow:-2px 0 44px -3px rgba(0,0,0,.1);
+}
+
+#board_axis{
+	width:100%; 
+	height: 55px;
+}
+#board_time{
+	width:100%; 
+	height: calc(100% - 160px); 
+	overflow:auto;
+}
+#time_legend{
+	width:100%; 
+	height:75px; 
+	background: #e1e6e8;
+	box-shadow:0 -2px 54px 5px rgba(0,0,0,.1);
+	/*border-bottom: 1px solid #667a82;*/
+	/*border-left:1px solid #667a82;*/
+
+}
+#board_info{
+	position: absolute;
+	left:15px;
+	bottom: 125px;
+	width:400px; 
+	height: 315px; 
+
+	overflow:hidden;
+	font-family: sans-serif;
+	font-weight: lighter;
+	font-size: 13px;
+	padding-left: 17px;
+	/*padding-top: 12px;*/
+}
+
+#board_header{
+	 /*background: #a9cbce;*/
+	 height: 30px;
+	 /*color: #fff;*/
+}
+
+#info1{
+	font-size: 18px;
+	font-weight: bold;
+	width: 59%; 
+	height:35px; 
+	float:left;
+
+}
+#timeTeller{
+	margin-top: 5px;
+	width: 41%; 
+	height:35px; 
+	float:left;
+	 /*margin-top: 6px*/
+
+}
+#info2{
+	font-weight: bold;
+	/*opacity: 0.7;*/
+	height:20px; 
+	width: 58%; 
+	float:left;
+
+}
+
+#info2_cont{
+
+	height:20px; 
+	width: 17%; 
+	float:left;
+	
+
+}
+
+#info3{
+	/*margin-left: 16px;*/
+	width: 80%; 
+	height:20px; 
+	/*font-weight: bold;*/
+	float:left;
+	margin-top: 10px;
+	display:none;
+
+}
+#info3_cont{
+
+	width: 20%;
+	height:20px; 	
+	opacity:0.4;
+	font-weight: bold;
+	 float:left;
+	 margin-top: 10px;
+	 display:none;
+
+}
+#info4{
+
+	height:25px;
+	width: 100%; 
+	float:left;
+	margin-top: 15px;
+
+}
+#info5{
+	width: 100%;
+	float:left;
+	overflow:auto;
+}
+.circleWrapper{
+	float:left;
+	width:60px;
+	height: 100%;
+}
+.timeWrapper{
+	float:left;
+	width: calc(100% - 60px);
+	height:100%;
+}
+
+.borderDiv{
+	/*line-height: 10px;*/
+	font-family: arial;
+	font-size: 11px;
+	font-weight: 100;
+	position: fixed;
+	left: 27px; bottom: 48px;
+	height: 50px; width: 200px
+}
+.legendDiv{
+
+	font-family: arial;
+	font-size: 11.5px;
+	font-weight: 600;
+	position: absolute;
+	left: 15px;
+	bottom: 20px;
+	height: 40px;
+	width: 50%; 
+	/*pointer-events:none;*/
+}
+.legendDiv2{
+	font-family: arial;
+	font-weight: 100;
+	font-size: 12px;
+	position: absolute;
+	left: 15px;
+	bottom: 100px;
+	width: 40%;
+}
+.titleDIV{
+
+	position: fixed;
+	top: 24px;
+	left: 30px;
+
+}
+.mainTitle{
+	font-weight: bold;
+	font-family: times;
+	font-size: 25.5px;
+	opacity: 0.9;
+	/*font-style: oblique;*/
+	/*font-style: italic;*/
+
+}
+.subTitle{
+	font-weight: lighter;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 16px;
+	opacity: 0.8;
+	line-height: 30px;
+}
+.track-overlay {
+  pointer-events: stroke;
+  stroke-width: 45px;
+  stroke: transparent;
+  cursor: crosshair;
+}
+.timeText{
+	font-weight: italic;
+	/*color: #24393d;*/
+}
+
+.warList{
+	font-family: "Times New Roman", Times, serif;
+	font-size: 14px;
+}
+
+sup{
+	font-family: "Times New Roman", Times, serif;
+	font-size: 9px;
+	opacity:0.8;
+}
+
+#drag_info{
+
+	pointer-events:none;
+	text-align: right;
+	height: 40px;
+	position:absolute;
+	/*opacity: 0.5;*/
+	right: 5px;
+	top: 98px;
+	font-size: 11px;
+	width: 295px;
+	/*border-bottom: 1.5px dotted rgba(0, 0, 0, .3);*/
+	/*border-bottom-style:dashed;*/
+	
+
+}
+#zoom_info{
+
+	pointer-events:none;
+	text-align: right;
+	height: 30px;
+	position:absolute;
+	opacity: 0.5;
+	right: 18px;
+	top: 34px;
+	font-size: 11px;
+	width: calc(26% - 80px);
+
+}
+
+
+circle.legend_dispute{
+	fill:#acc7cf;
+}
+circle.legend_war{
+	stroke-width : 3;
+
+}
+circle.legend_high{
+	fill:#ff7b4c;
+}
+circle.legend_high_war{
+	stroke:#ff7b4c;
+}
+circle.legend_allied{
+	fill:#5b41f4;
+}
+circle.legend_allied_war{
+	stroke:#5b41f4;
+
+}
+circle.legend_hostile{
+	fill: #ff6060;
+}
+circle.legend_hostile_war{
+	stroke: #ff6060;
+
+}
+
+#fatality_level, #hostility_level{
+	font-size: 11.5px;
+	/*font-weight: bold;*/
+}
+
+.bars_num_f, .bars_num_h{
+	font-size: 9.5px;
+    text-anchor :middle
+}
+.hostilityBaseG_text{
+	opacity: 0.7;
+	pointer-events: none;
+	text-anchor: middle;
+	font-size: 9.5;
+}
+#zoom_info{
+	opacity: 0.4;
+	font-size: 11px;
+
+}
+#chartSVG{
+
+	transform: translate(-3px,-5px);
+		width: 100%;
+		height: 250;
+}
+.hostilityBars, .fatalityBars{
+
+	fill:#377082;
+	/*opacity: .75;*/
+}
+.d3-tip {
+  line-height: 1.7;
+  font-weight: bold;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  border-radius: 4px;
+}
+.d3-tip_country {
+  position: absolute !important;
+  top: 95px !important;
+  right: 50px !important;
+  left: 30px !important;
+  text-align: center;
+  width:90px;
+  line-height: 1.7;
+  font-weight: bold;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.35);
+  color: black;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.d3-tip_typology {
+	
+  font-size: 12px;
+  line-height: 1.7;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border-radius: 3px;
+}
+
+.tick_text{
+	font-size: 10px;
+}
+
+.hbarSVG{
+	transform: translate(-40px,0px);
+	width:100%;
+}
+
+
+
+
+@media screen and (max-width: 1080px){
+
+
+#board{
+	position: absolute;
+	top:0;
+	right:0;
+	width:245px; 
+	height:100%;
+	background: rgba(255,255,255,0.9); 
+	overflow:hidden; 
+	box-shadow:-2px 0 44px -3px rgba(0,0,0,.1);
+}
+.borderDiv{
+	/*line-height: 10px;*/
+	font-family: arial;
+	font-size: 11px;
+	font-weight: 100;
+	position: fixed;
+	left: 17px; bottom: 38px;
+	height: 50px; width: 200px
+}
+.legendDiv{
+
+	font-family: arial;
+	font-size: 11px;
+	font-weight: 600;
+	position: absolute;
+	left: 5px;
+	bottom: 5px;
+	height: 40px;
+	width: 50%; 
+	/*pointer-events:none;*/
+}
+.legendDiv2{
+	font-family: arial;
+	font-weight: 100;
+	font-size: 12px;
+	position: absolute;
+	left: 5px;
+	bottom: 80px;
+	width: 40%;
+}
+
+.titleDIV{
+
+	position: fixed;
+	top: 15px;
+	left: 18px;
+
+}
+.mainTitle{
+	font-weight: bold;
+	font-family: times;
+	font-size: 20px;
+	opacity: 0.9;
+	/*font-style: oblique;*/
+	/*font-style: italic;*/
+
+}
+.subTitle{
+	font-weight: lighter;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 12px;
+	opacity: 0.8;
+	line-height: 20px;
+}
+
+#board_info{
+	position: absolute;
+	left:5px;
+	bottom: 112px;
+	width:280px; 
+	height: 258px; 
+
+	overflow:hidden;
+	font-family: sans-serif;
+	font-weight: lighter;
+	font-size: 13px;
+	padding-left: 17px;
+	/*padding-top: 12px;*/
+}
+
+#info1{
+	font-size: 13px;
+	width: 57.5%; 
+	height:22px; 
+	
+	float:left;
+
+}
+#timeTeller{
+	width: 42.5%; 
+	/*font-size: ;*/
+	height:22px; 
+	float:left;
+		 /*margin-top: 6px*/
+
+}
+#info2{
+
+	height:20px; 
+	width: 63%; 
+	font-size: 10.5px;
+	float:left;
+	/*padding-top: 15px;*/
+}
+#info2_cont{
+
+	height:20px; 
+	width: 12%; 
+	font-size: 10.5px;
+	float:left;
+	/*padding-top: 15px;*/
+}
+#paddingDIV{
+	/*padding-top: 25px;*/
+}
+#info3{
+
+	height:20px; 
+	width: 85%; 
+	float:left;
+	margin-top: 0px;
+	display:none;
+	font-size: 11px;
+
+}
+#info3_cont{
+
+	height:20px; 
+	width: 15%;
+	 float:left;
+	 margin-top: 0px;
+	 display:none;
+
+}
+#info4{
+
+	height:25px;
+	width: 100%; 
+	float:left;
+	margin-top: 0px;
+	font-size: 11px;
+
+}
+.warList{
+	font-family: "Times New Roman", Times, serif;
+	font-size: 13px;
+}
+
+.d3-tip_country {
+  position: absolute !important;
+  top: 70px !important;
+  right: 50px !important;
+  left: 15px !important;
+  text-align: center;
+  width:90px;
+  line-height: 1.7;
+  font-weight: bold;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.35);
+  color: black;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+#fatality_level, #hostility_level{
+	font-size: 10px;
+	/*font-weight: bold;*/
+}
+.tick_text{
+	font-size: 9.5px;
+}
+#chartSVG{
+
+	transform: translate(-4px,5px);
+	width:100%;
+	height: 220;
+
+}
+
+.bars_num{
+
+	font-size: 8.5px;
+    text-anchor :middle
+}
+
+.hbarSVG{
+	transform: translate(20px,0px);
+	width:100%;
+}
+.bars_num_f, .bars_num_h{
+	font-size: 9px;
+    text-anchor :middle
+}
+/*#drag_info{
+
+	position:absolute;
+	opacity: 0.5;
+	right: 35px;
+	top: 110px;
+	font-size: 11px;
+
+}*/
+}
